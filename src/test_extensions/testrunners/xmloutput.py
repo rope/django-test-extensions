@@ -118,7 +118,7 @@ class _XmlTextTestResult(unittest.TestResult):
         self._lastWas = 'error'
         self._errorsAndFailures += '<error type="%s">' % err[0].__name__
         for line in apply(traceback.format_exception, err):
-           for l in string.split(line,"\n")[:-1]:
+           for l in string.split(escape(line),"\n")[:-1]:
               self._errorsAndFailures += "%s" % l
         self._errorsAndFailures += "</error>"
 
@@ -129,7 +129,7 @@ class _XmlTextTestResult(unittest.TestResult):
         self._lastWas = 'failure'
         self._errorsAndFailures += '<failure type="%s">' % err[0].__name__
         for line in apply(traceback.format_exception, err):
-           for l in string.split(line,"\n")[:-1]:
+           for l in string.split(escape(line),"\n")[:-1]:
               self._errorsAndFailures += "%s" % l
         self._errorsAndFailures += "</failure>"
 
