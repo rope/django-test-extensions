@@ -79,7 +79,8 @@ class Command(BaseCommand):
         elif options.get('xml'):
             test_runner_name = 'test_extensions.testrunners.xmloutput.run_tests'
         else:
-            test_runner_name = settings.TEST_RUNNER
+            test_runner_name = settings.TEST_RUNNER.replace('DjangoTestSuiteRunner', 
+                'run_tests')
 
         test_path = test_runner_name.split('.')
         # Allow for Python 2.5 relative paths
